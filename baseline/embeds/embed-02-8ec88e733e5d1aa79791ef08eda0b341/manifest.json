@@ -1,0 +1,64 @@
+{
+  "url": "https://46c26bda-3870-4f23-a36b-f08242124a9c.filesusr.com/html/0bb9d6_8ec88e733e5d1aa79791ef08eda0b341.html",
+  "title": "code example",
+  "slug": "embed-02-8ec88e733e5d1aa79791ef08eda0b341",
+  "capturedAt": "2026-11-17T08:40:07.214Z",
+  "info": {
+    "title": null,
+    "headings": [],
+    "bodyText": "MONOLITH PLATFORM CLIENT VIEW · REDACTED LIVE SYSTEM PORTFOLIO DASHBOARD COMPLIANCE SCORECARD COVERAGE ANALYSIS",
+    "externalScripts": [],
+    "hasCanvas": false,
+    "hasSvg": 0,
+    "hasVideo": false,
+    "hasTable": false,
+    "hasMap": false,
+    "hasChart": false,
+    "formFields": [],
+    "linkHrefs": [],
+    "bodyClass": "",
+    "styleCount": 1,
+    "linkCount": 1
+  },
+  "services": [],
+  "unknownExternal": [
+    "https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yK0BNntkaToggR7BYZbNPxDcwgknk-4.woff2",
+    "https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2"
+  ],
+  "networkCounts": {
+    "css": 0,
+    "js": 0,
+    "font": 2,
+    "image": 3,
+    "video": 0,
+    "json": 0,
+    "other": 2
+  },
+  "assets": [
+    {
+      "filename": "tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yK0BNntkaToggR7BYZbNPxDcwgknk-4.woff2",
+      "url": "https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yK0BNntkaToggR7BYZbNPxDcwgknk-4.woff2",
+      "bytes": 30944
+    },
+    {
+      "filename": "JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2",
+      "url": "https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2",
+      "bytes": 35508
+    },
+    {
+      "filename": "dashboard.jpg",
+      "url": "https://static.wixstatic.com/media/0bb9d6_28a634794e05458284d940d1b3ec3030~mv2.jpg/v1/fill/w_1280,h_575,q_90,enc_auto/dashboard.jpg",
+      "bytes": 80041
+    },
+    {
+      "filename": "compliance.jpg",
+      "url": "https://static.wixstatic.com/media/0bb9d6_a397dd5ef18e45d8a1494836f640200f~mv2.jpg/v1/fill/w_1280,h_575,q_90,enc_auto/compliance.jpg",
+      "bytes": 79624
+    },
+    {
+      "filename": "analysis.jpg",
+      "url": "https://static.wixstatic.com/media/0bb9d6_a86dd8094bee44adb5647d73f050a239~mv2.jpg/v1/fill/w_1280,h_575,q_90,enc_auto/analysis.jpg",
+      "bytes": 51606
+    }
+  ]
+}

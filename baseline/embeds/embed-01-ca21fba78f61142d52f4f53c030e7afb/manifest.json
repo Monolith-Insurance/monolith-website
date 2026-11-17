@@ -1,0 +1,43 @@
+{
+  "url": "https://46c26bda-3870-4f23-a36b-f08242124a9c.filesusr.com/html/0bb9d6_ca21fba78f61142d52f4f53c030e7afb.html",
+  "title": "code example",
+  "slug": "embed-01-ca21fba78f61142d52f4f53c030e7afb",
+  "capturedAt": "2026-11-17T08:39:58.630Z",
+  "info": {
+    "title": null,
+    "headings": [],
+    "bodyText": "",
+    "externalScripts": [],
+    "hasCanvas": true,
+    "hasSvg": 0,
+    "hasVideo": true,
+    "hasTable": false,
+    "hasMap": false,
+    "hasChart": true,
+    "formFields": [],
+    "linkHrefs": [],
+    "bodyClass": "",
+    "styleCount": 1,
+    "linkCount": 1
+  },
+  "services": [],
+  "unknownExternal": [
+    "https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2"
+  ],
+  "networkCounts": {
+    "css": 0,
+    "js": 0,
+    "font": 1,
+    "image": 0,
+    "video": 1,
+    "json": 0,
+    "other": 2
+  },
+  "assets": [
+    {
+      "filename": "JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2",
+      "url": "https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2",
+      "bytes": 35508
+    }
+  ]
+}

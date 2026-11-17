@@ -1,0 +1,41 @@
+<html><head><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#0F0F10}
+#w{position:relative;width:100%;height:100%;overflow:hidden}
+video,canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+video{object-fit:cover}
+#fb{position:absolute;left:0;right:0;text-align:center;color:#fff;font-family:Montserrat,Arial,sans-serif;font-weight:500;pointer-events:none;mix-blend-mode:difference}
+#fb .t{letter-spacing:.1em}#fb .s{letter-spacing:.3em}
+</style>
+</head><body><div id="w">
+ <video id="v" muted="" autoplay="" loop="" playsinline="" webkit-playsinline="" preload="auto" src="https://video.wixstatic.com/video/11062b_d21ff9e8cce1426fbd4f218f64fe884d/1080p/mp4/file.mp4"></video>
+ <canvas id="c" width="1440" height="900"></canvas>
+ <div id="fb" style="top: 41.6%; display: none;"><div class="t" style="font-size: 187.2px;">MONOLITH</div><div class="s" style="font-size: 59.04px; margin-top: 27px;">STRENGTH IN STRUCTURE</div></div>
+</div>
+<script>
+(function(){
+var v=document.getElementById('v'),c=document.getElementById('c'),x=c.getContext('2d'),fb=document.getElementById('fb');
+var W=0,H=0,R=1,ok=false;
+var TITLE_Y=.466,SUB_Y=.564,TITLE_W=.13,SUB_W=.041;
+function size(){var b=c.getBoundingClientRect();R=Math.min(window.devicePixelRatio||1,3);W=Math.round(b.width*R);H=Math.round(b.height*R);c.width=W;c.height=H;
+ fb.style.top=(TITLE_Y*100-5)+'%';fb.querySelector('.t').style.fontSize=(b.width*TITLE_W)+'px';fb.querySelector('.s').style.fontSize=(b.width*SUB_W)+'px';fb.querySelector('.s').style.marginTop=(b.height*.03)+'px'}
+function spaced(txt,cx,cy,px,ls,stroke,wt){x.font=wt+' '+px+'px Montserrat';x.textBaseline='middle';var sp=px*ls,tot=0,ws=[];for(var i=0;i<txt.length;i++){var w=x.measureText(txt[i]).width;ws.push(w);tot+=w+(i<txt.length-1?sp:0)}var px0=cx-tot/2;for(i=0;i<txt.length;i++){x.fillText(txt[i],px0,cy);if(stroke)x.strokeText(txt[i],px0,cy);px0+=ws[i]+sp}}
+function draw(){
+ if(v.readyState>=2&&W&&H){
+  var vw=v.videoWidth,vh=v.videoHeight,s=Math.max(W/vw,H/vh),dw=vw*s,dh=vh*s;
+  x.globalCompositeOperation='source-over';x.drawImage(v,(W-dw)/2,(H-dh)/2,dw,dh);
+  x.globalCompositeOperation='difference';x.fillStyle='#fff';x.strokeStyle='rgb(242,242,242)';x.lineWidth=1.5*R;
+  spaced('MONOLITH',W/2,H*TITLE_Y,W*TITLE_W,.1,false,500);
+  spaced('STRENGTH IN STRUCTURE',W/2,H*SUB_Y,W*SUB_W,.3,false,600);
+  if(!ok){ok=true;fb.style.display='none'}
+ }
+ requestAnimationFrame(draw)}
+function go(){var p=v.play();if(p&&p.catch)p.catch(function(){})}
+window.addEventListener('resize',size);
+document.addEventListener('touchstart',go,{passive:true});
+size();go();
+(document.fonts&&document.fonts.load?Promise.all([document.fonts.load('500 40px Montserrat'),document.fonts.load('600 16px Montserrat')]):Promise.resolve()).then(function(){},function(){}).then(function(){requestAnimationFrame(draw)});
+})();
+</script>
+</body></html>

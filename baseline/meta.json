@@ -1,0 +1,28 @@
+{
+  "title": "Monolith Risk Management | Strength in Structure",
+  "description": "Monolith is a risk management practice built by operators: one program, one proprietary platform and one team managing risk across the whole portfolio, all year.",
+  "canonical": "https://www.monolithrisk.com",
+  "favicon": "https://static.wixstatic.com/media/0bb9d6_b39d7b400c714e25b57412472e795d34%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/0bb9d6_b39d7b400c714e25b57412472e795d34%7Emv2.png",
+  "openGraph": {
+    "og:title": "Monolith Risk Management | Strength in Structure",
+    "og:description": "Monolith is a risk management practice built by operators: one program, one proprietary platform and one team managing risk across the whole portfolio, all year.",
+    "og:image": "https://static.wixstatic.com/media/0bb9d6_ccff752e0c384cab9b4f1722d7abf761%7Emv2.png/v1/fit/w_2500,h_1330,al_c/0bb9d6_ccff752e0c384cab9b4f1722d7abf761%7Emv2.png",
+    "og:image:width": "2500",
+    "og:image:height": "1330",
+    "og:url": "https://www.monolithrisk.com",
+    "og:site_name": "Monolith Risk Mgmt",
+    "og:type": "website"
+  },
+  "twitter": {
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Monolith Risk Management | Strength in Structure",
+    "twitter:description": "Monolith is a risk management practice built by operators: one program, one proprietary platform and one team managing risk across the whole portfolio, all year.",
+    "twitter:image": "https://static.wixstatic.com/media/0bb9d6_ccff752e0c384cab9b4f1722d7abf761%7Emv2.png/v1/fit/w_2500,h_1330,al_c/0bb9d6_ccff752e0c384cab9b4f1722d7abf761%7Emv2.png"
+  },
+  "other": {
+    "viewport": "width=device-width, initial-scale=1",
+    "generator": "Wix.com Website Builder",
+    "format-detection": "telephone=no",
+    "skype_toolbar": "skype_toolbar_parser_compatible"
+  }
+}
