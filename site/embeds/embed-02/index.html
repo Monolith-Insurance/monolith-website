@@ -1,0 +1,36 @@
+<html><head><style>
+html,body{margin:0;height:100%;background:#0F0F10;overflow:hidden}
+@font-face{font-family:'JetBrains Mono';font-weight:300 400;src:url('../../assets/fonts/jetbrains-mono.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-weight:300 500;src:url('../../assets/fonts/montserrat-500.woff2') format('woff2')}
+body{font-family:Montserrat,Helvetica,Arial,sans-serif;color:#FAFAF8}
+.wrap{position:relative;width:100%;height:100%;min-height:600px;background:#0F0F10;
+ background-image:linear-gradient(rgba(250,250,248,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(250,250,248,.035) 1px,transparent 1px);background-size:48px 48px}
+.c{position:absolute;width:18px;height:18px;border-color:rgba(179,179,183,.55);border-style:solid;pointer-events:none}
+.c1{left:14px;top:14px;border-width:1px 0 0 1px}.c2{right:14px;top:14px;border-width:1px 1px 0 0}.c3{left:14px;bottom:14px;border-width:0 0 1px 1px}.c4{right:14px;bottom:14px;border-width:0 1px 1px 0}
+.hud{position:absolute;left:28px;top:24px;font:10px/1.9 "JetBrains Mono",Menlo,monospace;letter-spacing:.18em;color:#B3B3B7}
+.live{position:absolute;right:28px;top:24px;font:10px/1.9 "JetBrains Mono",Menlo,monospace;letter-spacing:.22em;color:#B3B3B7;display:flex;align-items:center;gap:8px}
+.live i{display:inline-block;width:6px;height:6px;background:#FAFAF8;animation:bl 1.6s ease-in-out infinite}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.25}}
+.stack{position:absolute;left:28px;right:28px;top:64px;bottom:28px;display:flex;flex-direction:column;gap:18px}
+.shot{position:relative;border:1px solid #2a2a2e;border-radius:4px;overflow:hidden;background:#141416;box-shadow:0 30px 60px -30px rgba(0,0,0,.9);flex:0 0 auto;opacity:0;transform:translateY(14px);animation:up .9s cubic-bezier(.2,.7,.2,1) forwards}
+.shot img{display:block;width:100%;height:auto}
+.shot .lab{position:absolute;left:0;right:0;bottom:0;padding:8px 12px;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#B3B3B7;background:linear-gradient(0deg,rgba(15,15,16,.92),rgba(15,15,16,0))}
+.row{display:flex;gap:18px}
+.row .shot{flex:1 1 0;min-width:0}
+.shot:nth-child(1){animation-delay:.1s}.row .shot:nth-child(1){animation-delay:.35s}.row .shot:nth-child(2){animation-delay:.5s}
+@keyframes up{to{opacity:1;transform:none}}
+@media(max-width:600px){.hud,.live{display:none}.stack{top:14px;left:12px;right:12px;bottom:12px;gap:10px}.row{gap:10px}.shot .lab{font-size:8px;letter-spacing:.16em;padding:6px 8px}}
+</style>
+</head><body><div class="wrap">
+ <div class="c c1"></div><div class="c c2"></div><div class="c c3"></div><div class="c c4"></div>
+ <div class="hud">MONOLITH PLATFORM<br>CLIENT VIEW · REDACTED</div>
+ <div class="live"><i></i>LIVE SYSTEM</div>
+ <div class="stack">
+  <div class="shot"><img src="assets/dashboard.jpg" alt="Portfolio dashboard"><div class="lab">Portfolio dashboard</div></div>
+  <div class="row">
+   <div class="shot"><img src="assets/compliance.jpg" alt="Compliance scorecard"><div class="lab">Compliance scorecard</div></div>
+   <div class="shot"><img src="assets/analysis.jpg" alt="Coverage analysis"><div class="lab">Coverage analysis</div></div>
+  </div>
+ </div>
+</div>
+</body></html>
