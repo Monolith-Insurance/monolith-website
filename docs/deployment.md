@@ -16,6 +16,18 @@ The workflow file is at `.github/workflows/azure-static-web-apps.yml`.
 | `AZURE_STATIC_WEB_APPS_API_TOKEN` | GitHub repo → Settings → Secrets → Actions | Authorises the GitHub Actions runner to deploy to the Azure Static Web App. Rotate this in the Azure portal under the Static Web App resource → Manage deployment token. |
 | `SUPABASE_ANON_KEY` | GitHub repo → Settings → Secrets → Actions | Optional. If set, the placeholder `SUPABASE_ANON_KEY_REDACTED` in `site/embeds/embed-03/index.html` is replaced with this value before deploy. If the secret is absent the step is skipped silently and the map embed falls back to hardcoded walk counts. |
 
+## Contact form
+
+The form at `/api/contact` sends email via Azure Communication Services (ACS). Three app settings must be configured before it will work. Until they are set the function returns `503` and the form shows an error message — it will never show a false success.
+
+| App setting | Value | Notes |
+|---|---|---|
+| `ACS_CONNECTION_STRING` | ACS resource → Keys → Connection string | Keep this secret; never commit it. |
+| `CONTACT_TO_EMAIL` | `hello@monolithrisk.com` | Where contact submissions are delivered. |
+| `CONTACT_FROM_EMAIL` | DoNotReply address from the ACS Email domain | e.g. `DoNotReply@<domain>.azurecomm.net` — found in ACS → Email → Domains. |
+
+**Where to set them:** Azure portal → Static Web App resource → Settings → Environment variables → Add.
+
 ## Cutover checklist
 
 When switching the production domain from the `azurestaticapps.net` URL to the real domain:

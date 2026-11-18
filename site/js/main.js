@@ -88,8 +88,57 @@
       });
       if (!valid) return;
 
-      form.style.display = 'none';
-      if (success) success.classList.add('visible');
+      /* Clear any previous send error */
+      var prevErr = form.querySelector('.form-send-error');
+      if (prevErr) prevErr.remove();
+
+      /* Disable button while sending */
+      var btn = form.querySelector('.btn-send');
+      btn.disabled = true;
+      btn.textContent = 'Sending\u2026';
+
+      var payload = {
+        firstName: form.querySelector('[name="first_name"]').value.trim(),
+        lastName:  form.querySelector('[name="last_name"]').value.trim(),
+        company:   form.querySelector('[name="company"]').value.trim(),
+        email:     form.querySelector('[name="email"]').value.trim(),
+        message:   form.querySelector('[name="message"]').value.trim(),
+        website:   hp ? hp.value : ''
+      };
+
+      function showSendError() {
+        var el = document.createElement('p');
+        el.className = 'form-send-error';
+        el.style.cssText = 'margin-top:0.75rem;font-size:0.85rem;color:#a84040;';
+        el.textContent = 'Sorry, your message couldn\u2019t be sent. Please email us at hello@monolithrisk.com.';
+        form.querySelector('.form-submit').appendChild(el);
+      }
+
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (res) {
+          return res.json().then(function (data) {
+            return { ok: res.ok && data.ok === true };
+          });
+        })
+        .then(function (result) {
+          if (result.ok) {
+            form.style.display = 'none';
+            if (success) success.classList.add('visible');
+          } else {
+            showSendError();
+            btn.disabled = false;
+            btn.textContent = 'Send';
+          }
+        })
+        .catch(function () {
+          showSendError();
+          btn.disabled = false;
+          btn.textContent = 'Send';
+        });
     });
   }
 })();
