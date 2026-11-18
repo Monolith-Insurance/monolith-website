@@ -36,6 +36,25 @@
   /* Small delay so SMIL is ready before we begin */
   setTimeout(triggerHeroAnim, 200);
 
+  /* ── Mobile nav hamburger ───────────────────────── */
+  var hamburger = document.querySelector('.nav-hamburger');
+  if (hamburger) {
+    hamburger.addEventListener('click', function () {
+      var open = nav.classList.toggle('menu-open');
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      hamburger.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    document.querySelectorAll('.nav-links a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        nav.classList.remove('menu-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Open navigation');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
   /* ── Smooth scroll for anchor links ─────────────── */
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
