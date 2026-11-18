@@ -17,11 +17,14 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Inject Supabase anon key
-        if: ${{ secrets.SUPABASE_ANON_KEY != '' }}
         env:
-          SUPABASE_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
-          sed -i "s|SUPABASE_ANON_KEY_REDACTED|${SUPABASE_KEY}|g" site/embeds/embed-03/index.html
+          if [ -z "$SUPABASE_ANON_KEY" ]; then
+            echo "SUPABASE_ANON_KEY secret not set — skipping injection"
+          else
+            sed -i "s|SUPABASE_ANON_KEY_REDACTED|${SUPABASE_ANON_KEY}|g" site/embeds/embed-03/index.html
+          fi
 
       - name: Deploy to Azure Static Web Apps
         uses: Azure/static-web-apps-deploy@v1
