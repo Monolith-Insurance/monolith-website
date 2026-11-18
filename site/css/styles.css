@@ -708,24 +708,23 @@ section {
   transform-origin: center;
 }
 
-/* ── Tablet + Mobile ≤ 768px ────────────────────────── */
-@media (max-width: 768px) {
+/* ── Mobile < 1024px ─────────────────────────────────── */
+@media (max-width: 1023px) {
 
   /* Nav */
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
-
-  /* Nav border — thinner, lighter */
   #nav {
+    height: max(15.98vw, 56px);
     border-bottom-width: 1px;
     border-bottom-color: rgba(15,15,16,0.08);
   }
   #nav.scrolled { border-color: rgba(15,15,16,0.1); }
 
-  /* Logo — ~2× larger on mobile */
+  /* Logo — matches live site (8.75vw × 10.96vw) */
   .nav-logo svg {
-    width: 44px;
-    height: 54px;
+    width: 8.75vw;
+    height: 10.96vw;
   }
 
   /* Hamburger lines — thinner */
@@ -742,7 +741,7 @@ section {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: clamp(56px, 5vw, 86px);
+    top: max(15.98vw, 56px);
     left: 0;
     right: 0;
     padding: 40px clamp(24px, 4.236vw, 80px) 60px;
@@ -770,94 +769,114 @@ section {
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* Feature cards — 2-col grid */
-  .feature-cards {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px 32px;
-  }
-  .feature-card {
-    padding: 0;
-    margin-right: 0;
-  }
-  .feature-card:not(:last-child)::after { display: none; }
+  /* Section padding — scales proportionally with viewport */
+  #built        { padding: 13vw 0 10vw; }
+  #what-we-do   { padding: 13vw 0 10vw; }
+  #platform     { padding: 13vw 0 0; }
+  #mission      { padding: 13vw 0; }
+  #vision-about { padding: 13vw 0; }
+  #stand-for    { padding: 13vw 0; }
+  #contact      { padding: 13vw 0; }
 
-  /* Platform — stack vertically (text above, embed below) */
-  .platform-cols {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .platform-left { padding-right: 0; }
-  .platform-map { margin-top: 48px; }
+  /* Hero text — scales with viewport */
+  .hero-title { font-size: 11.38vw; }
+  .hero-sub   { font-size: 3.59vw; }
 
-  /* Vision + About — stack */
-  .vision-about-grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  /* Stand cards — 3-col */
-  .stand-cards {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 36px 24px;
-  }
-  .stand-card { padding-left: 0; }
-  .stand-card:not(:first-child)::before { display: none; }
-
-  /* Contact — stack */
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  /* Footer — stack */
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 32px;
-  }
-  .footer-nav { gap: 20px; }
-}
-
-/* ── Mobile only ≤ 480px ────────────────────────────── */
-@media (max-width: 480px) {
+  /* Section labels */
+  .section-label           { font-size: 3.59vw; }
+  #built .section-label    { font-size: 4.10vw; }
+  #platform .section-label { font-size: 5.13vw; }
+  .mission-label           { font-size: 3.59vw; }
+  .contact-label           { font-size: 5.13vw; }
 
   /* Feature cards — 1-col, centered */
   .feature-cards {
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .feature-card { text-align: center; }
+  .feature-card {
+    text-align: center;
+    padding: 0;
+    margin-right: 0;
+  }
+  .feature-card:not(:last-child)::after { display: none; }
   .feature-card-icon {
     margin-left: auto;
     margin-right: auto;
   }
 
+  /* Card icons — scale with viewport */
+  .feature-card-icon,
+  .feature-card-icon svg {
+    width: 10.8vw;
+    height: 10.8vw;
+  }
+
   /* Reorder Built to Hold: AI-DRIVEN first, BUILT TO LAST last */
-  #built .feature-card:nth-child(1) { order: 4; } /* BUILT TO LAST → 4th */
-  #built .feature-card:nth-child(2) { order: 1; } /* AI-DRIVEN → 1st */
-  #built .feature-card:nth-child(3) { order: 2; } /* RELATIONSHIPS → 2nd */
-  #built .feature-card:nth-child(4) { order: 3; } /* RESULTS → 3rd */
+  #built .feature-card:nth-child(1) { order: 4; }
+  #built .feature-card:nth-child(2) { order: 1; }
+  #built .feature-card:nth-child(3) { order: 2; }
+  #built .feature-card:nth-child(4) { order: 3; }
 
-  /* Section labels +15% */
-  .section-label { font-size: 18px; }
-  #platform .section-label { font-size: 21px; }
+  /* Built to Hold text */
+  .built-heading { font-size: 8.21vw; }
+  .built-sub     { font-size: 4.62vw; line-height: 1.35; margin-bottom: 48px; }
 
-  /* Section sub-paragraphs +30% */
-  .built-sub, .what-sub { font-size: 22px; line-height: 1.35; }
+  /* Feature card labels + body */
+  .feature-card-label             { font-size: 4.10vw; }
+  #what-we-do .feature-card-label { font-size: 3.59vw; }
+  .feature-card-text              { font-size: 3.59vw; line-height: 1.35; }
 
-  /* Card titles and body */
-  .feature-card-label { font-size: 15px; }
-  #what-we-do .feature-card-label { font-size: 14px; }
-  .feature-card-text { font-size: 18px; line-height: 1.35; }
+  /* What We Do text */
+  .what-heading { font-size: 7.69vw; }
+  .what-sub     { font-size: 4.62vw; line-height: 1.35; margin-bottom: 48px; }
 
-  /* Platform — heading +15%, sub +30% */
-  .platform-heading { font-size: 35px; }
-  .platform-sub { font-size: 21px; line-height: 1.35; }
+  /* Platform — stack vertically */
+  .platform-cols {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .platform-left { padding-right: 0; }
 
-  /* Mission quote +30% */
-  .mission-text { font-size: 33px; line-height: 1.35; }
+  /* Platform text */
+  .platform-heading { font-size: 7.69vw; }
+  .platform-sub     { font-size: 3.59vw; line-height: 1.35; max-width: none; }
 
-  /* Stand cards — 1 per row, left+right vertical lines */
+  /* Platform embed — aspect-ratio from live site (609×493px), scales with width */
+  .platform-right iframe {
+    height: auto;
+    aspect-ratio: 609 / 493;
+  }
+
+  /* Map — inset with side margins */
+  .platform-map {
+    margin-top: 56px;
+    border-top: 1px solid var(--color-rule2);
+    padding: 0 16px;
+  }
+  /* Map iframe — portrait aspect-ratio from live site (393px→345×632, 463px→406×745, h/w ~1.83) */
+  .platform-map iframe { height: auto; aspect-ratio: 100 / 183; }
+
+  /* Mission */
+  .mission-text { font-size: 5.64vw; line-height: 1.35; }
+
+  /* Vision + About — stack + reorder */
+  .vision-about-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .vision-block { display: contents; }
+  .vision-block > .section-label { order: 1; }
+  .about-block { order: 2; }
+  .vision-text {
+    order: 3;
+    font-size: 5.64vw;
+    color: #333;
+  }
+  .about-heading { font-size: 7.18vw; }
+  .about-text    { font-size: 3.59vw; line-height: 1.35; }
+
+  /* Stand cards — 1 per row with borders */
   .stand-cards {
     grid-template-columns: 1fr;
     gap: 0;
@@ -869,50 +888,44 @@ section {
     border-bottom: 1px solid var(--color-rule2);
   }
   .stand-card:first-child { border-top: 1px solid var(--color-rule2); }
-  .stand-card-label { font-size: 16px; }
-  .stand-card-text { font-size: 18px; line-height: 1.35; }
+  .stand-card:not(:first-child)::before { display: none; }
 
-  /* Platform embed heights — sized to content */
-  .platform-right iframe { height: 291px !important; }
-  .platform-map iframe   { height: 480px !important; }
-
-  /* Map — white gap above, inset with side margins */
-  .platform-map {
-    margin-top: 56px;
-    border-top: 1px solid var(--color-rule2);
-    padding: 0 16px;
+  /* Stand card icons */
+  .stand-card-icon,
+  .stand-card-icon svg {
+    width: 10.8vw;
+    height: 10.8vw;
   }
 
-  /* Contact info — centered, larger text */
-  .contact-info { text-align: center; }
-  .contact-label { font-size: 23px; }
-  .contact-heading { font-size: 35px; }
-  .contact-detail { font-size: 21px; line-height: 1.35; }
+  /* Stand card text */
+  .stand-card-label { font-size: 3.59vw; }
+  .stand-card-text  { font-size: 3.59vw; line-height: 1.35; }
+
+  /* Contact — stack + centered info */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .contact-info    { text-align: center; }
+  .contact-heading { font-size: 7.69vw; }
+  .contact-detail  { font-size: 4.10vw; line-height: 1.35; }
 
   /* Form name row — keep 2-col */
   .form-row { grid-template-columns: 1fr 1fr; }
 
-  /* Section headings +15% */
-  .built-heading { font-size: 41px; }
-  .what-heading { font-size: 37px; }
-  .about-heading { font-size: 32px; }
-
-  /* About text +30% */
-  .about-text { font-size: 17px; line-height: 1.35; }
-
-  /* Footer text +30% */
-  .footer-contact { font-size: 16px; line-height: 1.35; }
-  .footer-nav a { font-size: 14px; }
-  .footer-bottom { font-size: 14px; }
-
-  /* Vision + About mobile reorder:
-     OUR VISION label → ABOUT block → Vision quote */
-  .vision-block { display: contents; }
-  .vision-block > .section-label { order: 1; }
-  .about-block { order: 2; }
-  .vision-text {
-    order: 3;
-    font-size: 26px;
-    color: #333;
+  /* Footer — stack */
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
   }
+  .footer-nav     { gap: 20px; }
+  .footer-contact { font-size: 3.59vw; line-height: 1.35; }
+  .footer-nav a   { font-size: 2.82vw; }
+  .footer-bottom  { font-size: 2.82vw; }
+}
+
+/* Map iframe — wider mobile / tablet (632px–1023px): live site 673×1126 at 768px, h/w ~1.67 */
+@media (min-width: 632px) and (max-width: 1023px) {
+  .platform-map iframe { aspect-ratio: 100 / 167; }
 }
