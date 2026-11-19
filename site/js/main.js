@@ -22,6 +22,52 @@
   window.addEventListener('scroll', checkFades, { passive: true });
   checkFades();
 
+  /* ── Hero video alternating loop ────────────────── */
+  var heroVideo = document.getElementById('hero-video');
+  if (heroVideo) {
+    var heroClips = [
+      { r720: 'assets/videos/dallas-720.mp4',    r1080: 'assets/videos/dallas-1080.mp4' },
+      { r720: 'assets/videos/milwaukee-720.mp4', r1080: 'assets/videos/milwaukee-1080.mp4' }
+    ];
+    var heroIdx = 0;
+
+    function heroSrc(clip) {
+      return window.innerWidth < 768 ? clip.r720 : clip.r1080;
+    }
+
+    /* Hidden element to preload the next clip */
+    var preloadEl = document.createElement('video');
+    preloadEl.muted = true;
+    preloadEl.preload = 'auto';
+    preloadEl.setAttribute('aria-hidden', 'true');
+    preloadEl.style.cssText = 'position:absolute;width:0;height:0;opacity:0;pointer-events:none;';
+    var heroSection = document.getElementById('hero');
+    if (heroSection) heroSection.appendChild(preloadEl);
+
+    function preloadNext() {
+      var next = heroClips[(heroIdx + 1) % heroClips.length];
+      preloadEl.src = heroSrc(next);
+      preloadEl.load();
+    }
+
+    /* On ended, advance to next clip */
+    heroVideo.addEventListener('ended', function () {
+      heroIdx = (heroIdx + 1) % heroClips.length;
+      heroVideo.src = heroSrc(heroClips[heroIdx]);
+      heroVideo.load();
+      heroVideo.play().catch(function () {});
+      preloadNext();
+    });
+
+    /* Set initial source directly (no <source> children) and start playing */
+    heroVideo.src = heroSrc(heroClips[0]);
+    heroVideo.load();
+    heroVideo.play().catch(function () {});
+
+    /* Preload next clip once initial video starts playing */
+    heroVideo.addEventListener('playing', preloadNext, { once: true });
+  }
+
   /* ── MONOLITH animated SVG ───────────────────────── */
   /* animateForward collapses the bracket from its full
      size to a near-zero end path. fill="freeze" keeps

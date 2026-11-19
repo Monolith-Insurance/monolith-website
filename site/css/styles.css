@@ -162,9 +162,7 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* position text at ~65% from top, matching baseline */
-  justify-content: flex-end;
-  padding-bottom: 24vh;
+  justify-content: center;
   pointer-events: none;
 }
 .hero-monolith-wrap {
@@ -192,8 +190,7 @@ a { text-decoration: none; color: inherit; }
   font-size: clamp(72px, 13vw, 190px);
   font-weight: 500;
   letter-spacing: 0.08em;
-  color: var(--color-off);
-  mix-blend-mode: difference;
+  color: #ffffff;
   line-height: 1;
   text-align: center;
   position: relative;
@@ -203,8 +200,7 @@ a { text-decoration: none; color: inherit; }
   font-size: clamp(11px, 1.6vw, 23px);
   font-weight: 500;
   letter-spacing: 0.3em;
-  color: var(--color-off);
-  mix-blend-mode: difference;
+  color: #ffffff;
   margin-top: 16px;
   text-align: center;
   text-transform: uppercase;
@@ -482,9 +478,7 @@ section {
   padding: 0 0 0 28px;
   position: relative;
 }
-.stand-card:first-child {
-  padding-left: 0;
-}
+/* padding-left: 0 for first card is desktop-only; see @media (min-width: 1024px) below */
 .stand-card:not(:first-child)::before {
   content: '';
   position: absolute;
@@ -620,11 +614,12 @@ section {
 
 .form-success {
   display: none;
-  font-size: 14px;
+  font-size: clamp(18px, 1.8vw, 28px);
   font-weight: 400;
-  color: var(--color-muted);
+  color: #333;
   padding: 24px 0;
-  line-height: 1.65;
+  line-height: 1.35;
+  text-align: center;
 }
 .form-success.visible { display: block; }
 
@@ -928,4 +923,9 @@ section {
 /* Map iframe — wider mobile / tablet (632px–1023px): live site 673×1126 at 768px, h/w ~1.67 */
 @media (min-width: 632px) and (max-width: 1023px) {
   .platform-map iframe { aspect-ratio: 100 / 167; }
+}
+
+/* Stand cards desktop: first card has no left padding (flush with column edge) */
+@media (min-width: 1024px) {
+  .stand-card:first-child { padding-left: 0; }
 }
