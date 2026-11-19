@@ -13,8 +13,8 @@ _For Tyler. Last updated: 2026-11-19._
 | Azure resource | `swa-monolith-website` |
 | Resource group | `rg-monolith-website` |
 | Subscription | `MonolithRisk-App` |
-| Azure Email resource | `acs-monolith-website` |
-| Azure Communication Services resource | `ecs-monolith-website` |
+| Azure Communication Services resource | `acs-monolith-website` |
+| Email Communication Services resource | `ecs-monolith-website` |
 | Canonical URL | `https://www.monolithrisk.com` |
 | Bare domain | `monolithrisk.com` — forwards to `www` via GoDaddy URL forwarding |
 | DNS registrar | GoDaddy (Roy) |
@@ -88,6 +88,12 @@ On screens narrower than 768 px the `-720.mp4` variant plays; wider screens use 
 
 4. Commit, open a PR, check the preview, merge.
 
+### Sources
+
+Dallas night footage by Advancer Drones (https://www.pexels.com/video/dallas-texas-18505649/) and Milwaukee night footage by Michael (https://www.pexels.com/video/nighttime-aerial-view-of-city-skyline-with-lights-34682751/), both under the free Pexels license (commercial use allowed, no attribution required). The previous Wix video was Wix stock and was removed.
+
+### Poster image
+
 The poster image for the page (`site/index.html` `poster=` attribute and OG/Twitter meta tags) currently points at `assets/videos/dallas-poster.jpg`. If you want to change which frame browsers show before the video plays, update that attribute and the two meta tag references.
 
 ---
@@ -120,8 +126,8 @@ Two secrets live in **GitHub repo → Settings → Secrets → Actions**:
 
 | Secret | Purpose |
 |---|---|
-| `AZURE_STATIC_WEB_APPS_API_TOKEN` | Authorises GitHub Actions to deploy. Rotate via Azure portal → `swa-monolith-website` → Manage deployment token. |
-| `SUPABASE_ANON_KEY` | Injected into `site/embeds/embed-03/index.html` at deploy time (replaces the `SUPABASE_ANON_KEY_REDACTED` placeholder). Read-only public key — the map still falls back to hardcoded walk counts if this secret is absent. |
+| `AZURE_STATIC_WEB_APPS_API_TOKEN` | Authorizes GitHub Actions to deploy. Rotate via Azure portal → `swa-monolith-website` → Manage deployment token. |
+| `SUPABASE_ANON_KEY` | Read-only public key, injected into `site/embeds/embed-03/index.html` at deploy time in place of the `SUPABASE_ANON_KEY_REDACTED` placeholder. Without it, the map and property dots still display, but the live walk counts do not load. |
 
 **Never commit either key to the repo.** Secret scanning with push protection is enabled and will block the push if you try.
 
@@ -129,7 +135,7 @@ Two secrets live in **GitHub repo → Settings → Secrets → Actions**:
 
 ## Platform map (embed-03)
 
-The "In the Field" map in the Platform section calls the Supabase RPC `public_walk_stats` using the anon (public, read-only) key. It returns aggregated walk-count stats that augment the per-city tooltips. No PII, no table reads, no writes.
+The "Every community, walked." map in the Platform section calls the Supabase RPC `public_walk_stats` using the anon (public, read-only) key. It returns aggregated walk-count stats that augment the per-city tooltips. No PII, no table reads, no writes.
 
 The 337 property dots and unit counts on the map come from a hardcoded array baked into `site/embeds/embed-03/index.html` — they are not fetched from Supabase at runtime.
 
@@ -145,7 +151,7 @@ DNS is managed in GoDaddy by **Roy**.
 
 | Record | Type | Value | Notes |
 |---|---|---|---|
-| `www` | CNAME | Azure Static Web App hostname | Points the site to Azure |
+| `www` | CNAME | `witty-hill-00fc4260f.3.azurestaticapps.net` | Points the site to Azure |
 | `_dnsauth.www` | TXT | Azure-issued validation value | Domain ownership proof — keep it, do not delete |
 | `monolithrisk.com` (bare) | Forwarding | `https://www.monolithrisk.com` | GoDaddy URL forwarding; bare domain → www |
 
