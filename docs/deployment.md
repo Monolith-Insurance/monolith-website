@@ -33,5 +33,5 @@ The form at `/api/contact` sends email via Azure Communication Services (ACS). T
 When switching the production domain from the `azurestaticapps.net` URL to the real domain:
 
 1. Add the custom domain in the Azure Static Web Apps resource.
-2. **Remove the `X-Robots-Tag` header** from `site/staticwebapp.config.json` (the `noindex, nofollow` value prevents Google from indexing the staging URL but must not carry over to production).
+2. ~~**Remove the `X-Robots-Tag` header** from `site/staticwebapp.config.json`~~ — **Done at go-live.** The `noindex, nofollow` header was removed from `site/staticwebapp.config.json` when the site went live so the production domain is fully indexable.
 3. Confirm the `Content-Security-Policy-Report-Only` header causes no console errors on the live domain, then promote it to `Content-Security-Policy` once satisfied.
