@@ -1,8 +1,16 @@
 # Security Review — Monolith Website (D4)
 
 **Date:** 2026-11-18
-**Reviewer:** Claude Code / Nabil Karimi
-**Branch:** `docs/security-review`
+**Reviewer:** Nabil Karimi
+
+---
+
+## Status update (2026-11-20, after go-live)
+
+- **X-Robots-Tag noindex removed** at go-live. The production domain is fully indexable.
+- **Contact form live** and sending to hello@monolithrisk.com via Azure Communication Services. Success is shown only after confirmed send; it never shows a false success.
+- **Two additional CodeQL alerts fixed** ("Workflow does not contain permissions") by adding least-privilege permissions to the deploy workflow. 10 alerts closed in total; 0 open.
+- **Enforced CSP still pending** — see open items.
 
 ---
 
@@ -94,7 +102,7 @@ The contact form includes a honeypot field to deter basic bot submissions. The b
 
 1. **Supabase RLS** — confirm that the anon role is restricted to the `public_walk_stats` RPC only, with no read access to other tables.
 2. **Enforce CSP** — once the report-only policy produces no violations after cutover, promote it to an enforced `Content-Security-Policy` header. The `'unsafe-inline'` allowances for script and style should be reviewed at that point.
-3. **X-Robots-Tag** — remove `noindex, nofollow` at public launch cutover.
+3. ~~**X-Robots-Tag** — remove `noindex, nofollow` at public launch cutover.~~ **Done at go-live (2026-11-20).**
 4. **Repository visibility** — consider moving to a private repository under a GitHub Team plan to limit exposure of source, workflow configuration, and issue history.
 
 ---

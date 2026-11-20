@@ -1,9 +1,10 @@
 # Outstanding Items
 
-_For Tyler. Last updated: 2026-11-19._
+_For Tyler. Last updated: 2026-11-20._
 
 | Item | Why | Owner | Priority |
 |---|---|---|---|
+| Confirm the DKIM and Microsoft 365 DNS changes are intentional | During cutover verification on 2026-11-20, `selector1._domainkey` pointed to `monolithrisk.e-v1.dkim.mail.microsoft` instead of the original `valiantco.e-v1`, and a new `MS=ms57460673` TXT record was present. This looks like monolithrisk.com email moving into the MonolithRisk Microsoft 365 tenant. The website migration did not make these changes. If unintentional, a mismatched DKIM record can hurt email delivery. Check `selector2` too. | Tyler | High |
 | Retire Wix | Wix is the rollback path. Keep it active until Tyler approves timing and Devon authorizes the shutdown. Do not cancel before the site has been stable on Azure for an agreed period. | Devon / Tyler | High |
 | Export Wix contact list before shutdown | Roy confirmed the Wix forms have no submissions, but Wix keeps a separate contact list. Export it before shutdown if it's needed, since it can't be recovered afterward. | Steven | High |
 | Confirm Supabase RLS restricts anon role to `public_walk_stats` only | The anon key is public and browser-exposed. If RLS is misconfigured, it could allow reads on other tables. Verify in the Supabase dashboard that no tables or other RPC functions are accessible to the anon role. Also: the anon key likely belongs to the same Supabase project as `app.monolithrisk.com` — confirm this before rotating the key, because rotating it would break the app unless both are updated simultaneously. | Tyler | High |

@@ -1,3 +1,5 @@
+> **Historical document:** this is the plan written before the build on 2026-11-17. Some details changed during the project (for example, the hero video was replaced and DNS was moved off Wix). For the current setup, see `docs/runbook.md`.
+
 # Migration Plan — monolithrisk.com: Wix to Azure Static Web Apps
 
 _Last updated: 2026-11-17_

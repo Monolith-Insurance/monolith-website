@@ -13,8 +13,8 @@ The workflow file is at `.github/workflows/azure-static-web-apps.yml`.
 
 | Secret | Where to set it | Purpose |
 |---|---|---|
-| `AZURE_STATIC_WEB_APPS_API_TOKEN` | GitHub repo → Settings → Secrets → Actions | Authorises the GitHub Actions runner to deploy to the Azure Static Web App. Rotate this in the Azure portal under the Static Web App resource → Manage deployment token. |
-| `SUPABASE_ANON_KEY` | GitHub repo → Settings → Secrets → Actions | Optional. If set, the placeholder `SUPABASE_ANON_KEY_REDACTED` in `site/embeds/embed-03/index.html` is replaced with this value before deploy. If the secret is absent the step is skipped silently and the map embed falls back to hardcoded walk counts. |
+| `AZURE_STATIC_WEB_APPS_API_TOKEN` | GitHub repo → Settings → Secrets → Actions | Authorizes the GitHub Actions runner to deploy to the Azure Static Web App. Rotate this in the Azure portal under the Static Web App resource → Manage deployment token. |
+| `SUPABASE_ANON_KEY` | GitHub repo → Settings → Secrets → Actions | Optional. If set, the placeholder `SUPABASE_ANON_KEY_REDACTED` in `site/embeds/embed-03/index.html` is replaced with this value before deploy. Without it, the map and property dots still display, but live walk counts do not load. |
 
 ## Contact form
 
@@ -28,10 +28,10 @@ The form at `/api/contact` sends email via Azure Communication Services (ACS). T
 
 **Where to set them:** Azure portal → Static Web App resource → Settings → Environment variables → Add.
 
-## Cutover checklist
+## Cutover (completed 2026-11-20)
 
-When switching the production domain from the `azurestaticapps.net` URL to the real domain:
+- `www` CNAME points to `witty-hill-00fc4260f.3.azurestaticapps.net`.
+- Bare domain (`monolithrisk.com`) forwards to `https://www.monolithrisk.com` (301) via GoDaddy.
+- `noindex` header removed from `site/staticwebapp.config.json`.
 
-1. Add the custom domain in the Azure Static Web Apps resource.
-2. ~~**Remove the `X-Robots-Tag` header** from `site/staticwebapp.config.json`~~ — **Done at go-live.** The `noindex, nofollow` header was removed from `site/staticwebapp.config.json` when the site went live so the production domain is fully indexable.
-3. Confirm the `Content-Security-Policy-Report-Only` header causes no console errors on the live domain, then promote it to `Content-Security-Policy` once satisfied.
+**Remaining:** promote the report-only CSP to enforced once no violations appear.
