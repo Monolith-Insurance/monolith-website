@@ -1,12 +1,12 @@
 # Runbook — monolithrisk.com
 
-_For Tyler. Last updated: 2026-11-19._
+_For Tyler. Last updated: 2026-11-20._
 
 ---
 
 ## Overview
 
-`monolithrisk.com` is a static site (plain HTML/CSS/JS, no framework). It lives in the GitHub repo **Monolith-Insurance/monolith-website** (currently public) and is hosted on **Azure Static Web Apps** (free tier).
+`monolithrisk.com` is a static site (plain HTML/CSS/JS, no framework). It lives in the GitHub repo **Monolith-Insurance/monolith-website** (currently public) and is hosted on **Azure Static Web Apps** (free tier). Went live on 2026-11-20.
 
 | Thing | Value |
 |---|---|
@@ -168,6 +168,8 @@ DNS is managed in GoDaddy by **Roy**.
 | `asuid.app` | TXT | Azure domain verification for the client app |
 
 Do not change any of the email or app records. The HTTPS certificate for `www.monolithrisk.com` is free and renews automatically through Azure.
+
+GoDaddy's HTTPS for the bare-domain forwarding can take a few hours to activate after setup. Until it does, `https://monolithrisk.com` (no www) may show a certificate warning; `www` and `http://` are unaffected.
 
 ---
 
